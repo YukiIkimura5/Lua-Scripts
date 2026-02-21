@@ -1,31 +1,31 @@
--- FCEUX Game Corruptor Script
+-- Enhanced custom corruption settings
+-- Define your custom corruption parameters here
+local corruptionSettings = {
+    intensity = 5,  -- Set corruption intensity (1-10)
+    duration = 60,  -- Duration of corruption in seconds
+    hotkeys = {
+        start = 'F1',  -- Hotkey to start corruption
+        stop = 'F2',   -- Hotkey to stop corruption
+    },
+    -- Add more settings as needed
+}
 
--- Define hotkeys
-local hotkeyActivate = 0x01 -- Example: F1 key
-local hotkeySave = 0x02 -- Example: F2 key
-
--- GUI setup
-function createGUI()
-    -- Create a simple GUI for user interaction
-    fceux_gui = gui.createWindow("Game Corruptor")
-    fceux_gui:setSize(300, 200)
-
-    -- Add buttons and labels as needed
+-- Improved GUI interface
+function createGui()
+    -- Your GUI creation code here
 end
 
--- Activation of the corruptor
-function activateCorruption()
-    -- Logic for corrupting the game data
+function applyCorruption()
+    -- Apply custom corruption logic here
 end
 
--- Listen for hotkeys
-while true do
-    if input.isKeyPressed(hotkeyActivate) then
-        activateCorruption()
+-- On hotkey pressed event
+function onHotkeyPressed(key)
+    if key == corruptionSettings.hotkeys.start then
+        applyCorruption()
+    elseif key == corruptionSettings.hotkeys.stop then
+        -- Logic to stop corruption
     end
-    -- Additional hotkey functions can be monitored here
-    emu.frameadvance()  -- Keep the emulator running
 end
 
--- Initialize GUI
-createGUI()
+createGui() -- Initialize the GUI
